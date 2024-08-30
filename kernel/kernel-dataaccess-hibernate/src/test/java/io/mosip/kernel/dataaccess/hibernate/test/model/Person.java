@@ -3,8 +3,8 @@
  */
 package io.mosip.kernel.dataaccess.hibernate.test.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * @author Dharmesh Khandelwal
@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 @Table(name = "Person", schema = "kernel")
 public class Person {
 
-	@jakarta.persistence.Id
+	@javax.persistence.Id
 	private int Id;
 
 	private String name;

@@ -5,10 +5,9 @@ import static io.mosip.kernel.saltgenerator.constant.SaltGeneratorConstant.CHUNK
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.env.Environment;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import io.mosip.kernel.saltgenerator.entity.SaltEntity;
 
@@ -32,6 +30,13 @@ public class SaltGeneratorJobConfig {
 	@Autowired
 	private Environment env;
 
+	/** The job builder factory. */
+	@Autowired
+	private JobBuilderFactory jobBuilderFactory;
+
+	/** The step builder factory. */
+	@Autowired
+	private StepBuilderFactory stepBuilderFactory;
 	
 	/** The listener. */
 	@Autowired
@@ -52,8 +57,9 @@ public class SaltGeneratorJobConfig {
 	 * @return the job
 	 */
 	@Bean
-	public Job job(JobRepository jobRepository,Step step) {
-		return new JobBuilder("job", jobRepository)
+	public Job job(Step step) {
+		return jobBuilderFactory
+				.get("job")
 				.incrementer(new RunIdIncrementer())
 				.listener(listener)
 				.flow(step)
@@ -68,10 +74,10 @@ public class SaltGeneratorJobConfig {
 	 * @return the step
 	 */
 	@Bean
-	public Step step(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-		return new StepBuilder("step", jobRepository)
-				.<SaltEntity, SaltEntity>chunk(env.getProperty(CHUNK_SIZE.getValue(), Integer.class),
-						transactionManager)
+	public Step step() {
+		return stepBuilderFactory
+				.get("step")
+				.<SaltEntity, SaltEntity> chunk(env.getProperty(CHUNK_SIZE.getValue(), Integer.class))
 				.reader(reader)
 				.writer(writer)
 				.build();

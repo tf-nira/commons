@@ -2,19 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>1.3.0-beta.1</version>
+	<version>1.2.0.1</version>
 	<groupId>io.mosip.kernel</groupId>
 	<artifactId>kernel-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>kernel</name>
 	<description>Parent project of MOSIP Kernel</description>
-	<url>https://github.com/mosip/commons</url>
+	<url>https://github.com/niratest/commons</url>
 <properties>		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- maven -->
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.version>3.8.0</maven.compiler.version>
 		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
 		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
@@ -31,8 +31,7 @@
 	</properties>
 
 	<modules>
-		<module>kernel-bom</module>
-		<module>kernel-core</module>
+	        <module>kernel-core</module>
 		<module>kernel-logger-logback</module>
 		<module>kernel-dataaccess-hibernate</module>
 		<module>kernel-idgenerator-prid</module>
@@ -57,18 +56,19 @@
 		<module>kernel-transliteration-icu4j</module>
 		<module>kernel-applicanttype-api</module>
 		<module>kernel-idobjectvalidator</module>
-		<!-- <module>kernel-bioapi-provider</module> -->
-		<!-- <module>kernel-authcodeflowproxy-api</module> Move to mosip/mosip-openid-bridge -->
-		<!-- <module>kernel-biometrics-api</module> Moved to mosip/bio-utils -->
-                <module>kernel-websubclient-api</module>
-		<!-- <module>kernel-otpmanager-service</module> Moved to mosip/otp-manager -->
+		<!-- 
+		Depricated or Moved out of commons
+		<module>kernel-biometrics-api</module>
+		<module>kernel-bioapi-provider</module> 
+		<module>kernel-authcodeflowproxy-api</module> -->
+		<module>kernel-websubclient-api</module>
+		<!-- <module>kernel-otpmanager-service</module> -->
 		<module>kernel-notification-service</module>
 		<module>kernel-ridgenerator-service</module>
 		<module>kernel-idgenerator-service</module>
 		<module>kernel-pridgenerator-service</module>
 		<module>kernel-salt-generator</module>
 		<module>kernel-demographics-api</module>
-		<module>kernel-config-server</module>
 	</modules>
 
     <repositories>
@@ -240,7 +240,7 @@
                <plugin>
                   <groupId>org.sonatype.plugins</groupId>
                   <artifactId>nexus-staging-maven-plugin</artifactId>
-                  <version>1.6.14</version>
+                  <version>1.6.7</version>
                   <extensions>true</extensions>
                   <executions>
                     <execution>
@@ -337,9 +337,9 @@
           </plugins>
         </build>
 		<scm>
-                <connection>scm:git:git://github.com/mosip/commons.git</connection>
-                <developerConnection>scm:git:ssh://github.com:mosip/commons.git</developerConnection>
-                <url>https://github.com/mosip/commons</url>
+                <connection>scm:git:git://github.com/niratest/commons.git</connection>
+                <developerConnection>scm:git:ssh://github.com:niratest/commons.git</developerConnection>
+                <url>https://github.com/niratest/commons</url>
                 <tag>HEAD</tag>
         </scm>
 		<licenses>
@@ -351,9 +351,9 @@
 		<developers>
                 <developer>
                   <name>Mosip</name>
-                  <email>mosip.emailnotifier@gmail.com</email>
+                  <email>mosiptest@nira.go.ug</email>
                   <organization>io.mosip</organization>
-                  <organizationUrl>https://github.com/mosip/commons</organizationUrl>
+                  <organizationUrl>https://github.com/niratest/commons</organizationUrl>
                 </developer>
         </developers>
 	<profiles>

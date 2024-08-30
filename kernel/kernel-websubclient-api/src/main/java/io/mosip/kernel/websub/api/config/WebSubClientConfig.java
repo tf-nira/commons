@@ -1,6 +1,6 @@
 package io.mosip.kernel.websub.api.config;
 
-import jakarta.servlet.Filter;
+import javax.servlet.Filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

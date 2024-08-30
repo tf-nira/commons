@@ -1,6 +1,6 @@
 package io.mosip.kernel.emailnotification.config;
 
-import jakarta.servlet.Filter;
+import javax.servlet.Filter;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;

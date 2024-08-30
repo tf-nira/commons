@@ -14,5 +14,4 @@ public class AccessTokenResponse {
 	private String token_type;
 	private String session_state;
 	private String scope;
-	private String id_token;
 }

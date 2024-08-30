@@ -3,7 +3,7 @@ package io.mosip.kernel.applicanttype.api.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 
 import org.json.JSONException;
 import org.json.JSONObject;

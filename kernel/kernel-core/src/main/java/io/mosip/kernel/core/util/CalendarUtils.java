@@ -42,9 +42,6 @@ public final class CalendarUtils {
 		} catch (java.lang.IllegalArgumentException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		} catch (java.lang.ArithmeticException exception) {
 			throw new ArithmeticException(CalendarUtilConstants.ARITHMETIC_EXCEPTION_CODE.getErrorCode(),
 					CalendarUtilConstants.YEAR_OVERFLOW_MESSAGE.getErrorCode(), exception.getCause());
@@ -65,9 +62,6 @@ public final class CalendarUtils {
 		try {
 			return DateUtils.getFragmentInDays(calendar, fragment);
 		} catch (java.lang.IllegalArgumentException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
@@ -91,9 +85,6 @@ public final class CalendarUtils {
 		} catch (java.lang.IllegalArgumentException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
 	}
 
@@ -112,9 +103,6 @@ public final class CalendarUtils {
 		try {
 			return DateUtils.getFragmentInMilliseconds(calendar, fragment);
 		} catch (java.lang.IllegalArgumentException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
@@ -136,9 +124,6 @@ public final class CalendarUtils {
 		} catch (java.lang.IllegalArgumentException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
 	}
 
@@ -158,9 +143,6 @@ public final class CalendarUtils {
 		} catch (java.lang.IllegalArgumentException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
 	}
 
@@ -176,9 +158,6 @@ public final class CalendarUtils {
 		try {
 			return DateUtils.isSameDay(cal1, cal2);
 		} catch (java.lang.IllegalArgumentException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
@@ -197,9 +176,6 @@ public final class CalendarUtils {
 		try {
 			return DateUtils.isSameInstant(cal1, cal2);
 		} catch (java.lang.IllegalArgumentException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
@@ -221,9 +197,6 @@ public final class CalendarUtils {
 		} catch (java.lang.IllegalArgumentException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}
 	}
 
@@ -240,9 +213,6 @@ public final class CalendarUtils {
 		try {
 			return DateUtils.round(calendar, field);
 		} catch (java.lang.IllegalArgumentException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		} catch (java.lang.ArithmeticException exception) {
@@ -297,9 +267,6 @@ public final class CalendarUtils {
 		} catch (java.lang.IllegalArgumentException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		} catch (java.lang.ArithmeticException exception) {
 			throw new ArithmeticException(CalendarUtilConstants.ARITHMETIC_EXCEPTION_CODE.getErrorCode(),
 					CalendarUtilConstants.YEAR_OVERFLOW_MESSAGE.getErrorCode(), exception.getCause());
@@ -320,9 +287,6 @@ public final class CalendarUtils {
 		try {
 			return DateUtils.truncatedEquals(cal1, cal2, field);
 		} catch (java.lang.IllegalArgumentException exception) {
-			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
-					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
-		} catch (java.lang.NullPointerException exception) {
 			throw new IllegalArgumentException(CalendarUtilConstants.ILLEGAL_ARGUMENT_CODE.getErrorCode(),
 					CalendarUtilConstants.ILLEGAL_ARGUMENT_MESSAGE.getErrorCode(), exception.getCause());
 		}

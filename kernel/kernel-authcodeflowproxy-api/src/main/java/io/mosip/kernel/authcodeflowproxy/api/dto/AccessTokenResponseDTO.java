@@ -9,5 +9,4 @@ import lombok.NoArgsConstructor;
 public class AccessTokenResponseDTO {
 	private String accessToken;
 	private String expiresIn;
-	private String idToken;
 }

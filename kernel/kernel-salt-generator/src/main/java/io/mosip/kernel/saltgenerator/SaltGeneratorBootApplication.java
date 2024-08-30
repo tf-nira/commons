@@ -1,5 +1,6 @@
 package io.mosip.kernel.saltgenerator;
 
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.scheduling.ScheduledTasksEndpointAutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -14,6 +15,7 @@ import org.springframework.context.ApplicationContext;
  * @author Manoj SP
  */
 @SpringBootApplication
+@EnableBatchProcessing
 @EnableAutoConfiguration(exclude = { JmxAutoConfiguration.class, ScheduledTasksEndpointAutoConfiguration.class })
 public class SaltGeneratorBootApplication {
 

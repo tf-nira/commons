@@ -6,7 +6,7 @@
  * import java.io.IOException; import java.net.ServerSocket; import
  * java.util.stream.Stream;
  * 
- * import jakarta.annotation.PostConstruct;
+ * import javax.annotation.PostConstruct;
  * 
  * import org.junit.AfterClass; import org.junit.BeforeClass; import
  * org.junit.Test; import org.junit.runner.RunWith; import org.mockito.Mockito;

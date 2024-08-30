@@ -3,13 +3,14 @@ package io.mosip.kernel.saltgenerator.step.test;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.Collections;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.batch.item.Chunk;
 
 import io.mosip.kernel.core.saltgenerator.constant.SaltGeneratorErrorConstants;
 import io.mosip.kernel.core.saltgenerator.exception.SaltGeneratorException;
@@ -31,7 +32,7 @@ public class SaltWriterTest {
 		SaltEntity entity = new SaltEntity();
 		entity.setId(0l);
 		when(repo.countByIdIn(Mockito.any())).thenReturn(0l);
-		writer.write(Chunk.of(entity));
+		writer.write(Collections.singletonList(entity));
 	}
 
 	@Test
@@ -40,7 +41,7 @@ public class SaltWriterTest {
 			SaltEntity entity = new SaltEntity();
 			entity.setId(0l);
 			when(repo.countByIdIn(Mockito.any())).thenReturn(1l);
-			writer.write(Chunk.of(entity));
+			writer.write(Collections.singletonList(entity));
 		} catch (SaltGeneratorException e) {
 			assertEquals(SaltGeneratorErrorConstants.RECORD_EXISTS.getErrorCode(), e.getErrorCode());
 			assertEquals(SaltGeneratorErrorConstants.RECORD_EXISTS.getErrorMessage(), e.getErrorText());
