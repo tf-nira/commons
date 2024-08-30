@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jre-alpine
+FROM openjdk:11
 
 ARG SOURCE
 ARG COMMIT_HASH
@@ -46,16 +46,16 @@ ARG container_user=mosip
 ARG container_user_group=mosip
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-ARG container_user_uid=1002
+ARG container_user_uid=1001
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
 ARG container_user_gid=1001
 
 # install packages and create user
-RUN apk -q update \
-&& apk add -q unzip wget \
-&& addgroup -g ${container_user_gid} ${container_user_group} \
-&& adduser -s /bin/sh -u ${container_user_uid} -G ${container_user_group} -h /home/${container_user} --disabled-password ${container_user}
+RUN apt-get -y update \
+&& apt-get install -y unzip \
+&& groupadd -g ${container_user_gid} ${container_user_group} \
+&& useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user}
 
 # set working directory for the user
 WORKDIR /home/${container_user}
@@ -86,11 +86,12 @@ CMD if [ "$is_glowroot_env" = "present" ]; then \
     rm -rf glowroot.zip ; \
     sed -i 's/<service_name>/kernel-notification-service/g' glowroot/glowroot.properties ; \
     wget -q --show-progress "${runtime_dep_url_env}/kernel-auth-adapter.jar" -O "${loader_path_env}"/kernel-auth-adapter.jar; \
-    wget -q --show-progress "${runtime_dep_url_env}/kernel-smsserviceprovider-msg91.jar" -O "${loader_path_env}"/kernel-smsserviceprovider-msg91.jar; \
+    wget -q --show-progress "${runtime_dep_url_env}/kernel-smsserviceprovider-nita-1.2.0.1-B2.jar" -O "${loader_path_env}"/kernel-smsserviceprovider-nita-1.2.0.1-B2.jar; \
+    # wget -q --show-progress "${runtime_dep_url_env}/kernel-smsserviceprovider-nirasms.jar" -O "${loader_path_env}"/kernel-smsserviceprovider-nirasms.jar; \
     java -jar -javaagent:glowroot/glowroot.jar -Dloader.path="${loader_path_env}" -Dspring.cloud.config.label="${spring_config_label_env}" -Dspring.profiles.active="${active_profile_env}" -Dspring.cloud.config.uri="${spring_config_url_env}" kernel-notification-service.jar ; \
     else \
     wget -q --show-progress "${runtime_dep_url_env}/kernel-auth-adapter.jar" -O "${loader_path_env}"/kernel-auth-adapter.jar; \
-    wget -q --show-progress "${runtime_dep_url_env}/kernel-smsserviceprovider-msg91.jar" -O "${loader_path_env}"/kernel-smsserviceprovider-msg91.jar; \
+    wget -q --show-progress "${runtime_dep_url_env}/kernel-smsserviceprovider-nita-1.2.0.1-B2.jar" -O "${loader_path_env}"/kernel-smsserviceprovider-nita-1.2.0.1-B2.jar; \
+    # wget -q --show-progress "${runtime_dep_url_env}/kernel-smsserviceprovider-nirasms.jar" -O "${loader_path_env}"/kernel-smsserviceprovider-nirasms.jar; \
     java -jar -Dloader.path="${loader_path_env}" -Dspring.cloud.config.label="${spring_config_label_env}" -Dspring.profiles.active="${active_profile_env}" -Dspring.cloud.config.uri="${spring_config_url_env}" kernel-notification-service.jar ; \
     fi
-

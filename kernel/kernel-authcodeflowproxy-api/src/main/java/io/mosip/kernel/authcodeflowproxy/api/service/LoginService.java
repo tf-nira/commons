@@ -1,6 +1,6 @@
 package io.mosip.kernel.authcodeflowproxy.api.service;
 
-import jakarta.servlet.http.Cookie;
+import javax.servlet.http.Cookie;
 
 
 import io.mosip.kernel.authcodeflowproxy.api.dto.AccessTokenResponseDTO;

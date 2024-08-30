@@ -1,6 +1,6 @@
 package io.mosip.kernel.ridgenerator.config;
 
-import jakarta.servlet.Filter;
+import javax.servlet.Filter;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

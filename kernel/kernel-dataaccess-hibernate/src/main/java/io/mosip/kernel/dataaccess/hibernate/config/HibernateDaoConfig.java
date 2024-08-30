@@ -3,6 +3,7 @@ package io.mosip.kernel.dataaccess.hibernate.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
@@ -151,7 +152,7 @@ public class HibernateDaoConfig implements BaseDaoConfig {
 	 */
 	@Override
 	@Bean
-	public PlatformTransactionManager transactionManager(jakarta.persistence.EntityManagerFactory entityManagerFactory) {
+	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager jpaTransactionManager = new JpaTransactionManager(entityManagerFactory);
 		jpaTransactionManager.setDataSource(dataSource());
 		jpaTransactionManager.setJpaDialect(jpaDialect());

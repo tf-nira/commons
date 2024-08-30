@@ -1,6 +1,6 @@
 package io.mosip.kernel.idgenerator.prid.repository;
 
-import jakarta.persistence.LockModeType;
+import javax.persistence.LockModeType;
 
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;

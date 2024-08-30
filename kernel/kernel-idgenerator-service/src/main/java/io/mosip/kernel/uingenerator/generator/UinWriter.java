@@ -1,7 +1,7 @@
 package io.mosip.kernel.uingenerator.generator;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;

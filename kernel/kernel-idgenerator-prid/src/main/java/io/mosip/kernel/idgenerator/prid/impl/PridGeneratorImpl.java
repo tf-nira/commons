@@ -2,15 +2,13 @@ package io.mosip.kernel.idgenerator.prid.impl;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.concurrent.TimeUnit;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 
 import io.mosip.kernel.core.idgenerator.spi.PridGenerator;
@@ -51,36 +49,16 @@ public class PridGeneratorImpl implements PridGenerator<String> {
 	@Value("${mosip.kernel.prid.length}")
 	private int pridLength;
 
-	@Value("${mosip.idgen.prid.secure-random-reinit-frequency:45}")
-	private int reInitSecureRandomFrequency;
-
 	@PostConstruct
 	private void init() {
-		ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-		taskScheduler.setPoolSize(1);
-		taskScheduler.initialize();
-		taskScheduler.scheduleAtFixedRate(new ReInitSecureRandomTask(),
-				TimeUnit.MINUTES.toMillis(reInitSecureRandomFrequency));
-	}
-
-	private class ReInitSecureRandomTask implements Runnable {
-
-		public void run() {
-			initialize();
-		}	
-	}
-	
-	private void initialize() {
 		SecureRandom random = new SecureRandom();
 		byte[] randomSeedBytes = new byte[Integer.parseInt(PridPropertyConstant.RANDOM_NUMBER_SIZE.getProperty())];
 		random.nextBytes(randomSeedBytes);
-		randomSeed = new BigInteger(randomSeedBytes).abs().toString().substring(0,
-				Integer.parseInt(PridPropertyConstant.RANDOM_NUMBER_SIZE.getProperty()));
+		randomSeed = new BigInteger(randomSeedBytes).abs().toString().substring(0,Integer.parseInt(PridPropertyConstant.RANDOM_NUMBER_SIZE.getProperty()));
 		do {
 			byte[] counterBytes = new byte[Integer.parseInt(PridPropertyConstant.RANDOM_NUMBER_SIZE.getProperty())];
 			random.nextBytes(counterBytes);
-			counter = new BigInteger(counterBytes).abs().toString().substring(0,
-					Integer.parseInt(PridPropertyConstant.RANDOM_NUMBER_SIZE.getProperty()));
+			counter = new BigInteger(counterBytes).abs().toString().substring(0,Integer.parseInt(PridPropertyConstant.RANDOM_NUMBER_SIZE.getProperty()));
 		} while (counter.charAt(0) == '0');
 	}
 
@@ -101,9 +79,6 @@ public class PridGeneratorImpl implements PridGenerator<String> {
 	 */
 	private String generateRandomId() {
 		String prid = null;
-		if(counter == null) {
-			initialize();
-		}
 		counter = init ? counter : new BigInteger(counter).add(BigInteger.ONE).toString();
 		init = false;
 		SecretKey secretKey = new SecretKeySpec(counter.getBytes(),

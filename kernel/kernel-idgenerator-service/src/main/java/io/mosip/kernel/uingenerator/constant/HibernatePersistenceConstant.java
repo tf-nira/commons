@@ -39,7 +39,7 @@ public class HibernatePersistenceConstant {
 	/**
 	 * The string constant my sql dialect
 	 */
-	public static final String POSTGRESQL_95_DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
+	public static final String POSTGRESQL_95_DIALECT = "org.hibernate.dialect.PostgreSQL95Dialect";
 	/**
 	 * The string constant for hibernate statistics
 	 */

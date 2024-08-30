@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -61,7 +61,7 @@ public class UinValidatorImpl implements UinValidator<String> {
 	 * id. For example if limit is 2, then 11 and 1x1 is not allowed in id (x is any
 	 * digit)
 	 */
-	@Value("${mosip.kernel.uin.length.repeating-limit:10}")
+	@Value("${mosip.kernel.uin.length.repeating-limit:-1}")
 	private int repeatingLimit;
 
 	/**
@@ -135,7 +135,7 @@ public class UinValidatorImpl implements UinValidator<String> {
 		 * <b>\1</b> matches the same text as most recently matched by the 1st capturing
 		 * group<br/>
 		 */
-		String repeatingRegEx = "([0-9])\\1{"+repeatingLimit+"}";
+		String repeatingRegEx = "(\\d)\\d{0," + (repeatingLimit - 1) + "}\\1";
 		/**
 		 * Regex for matching repeating block of digits like 482xx482, 4827xx4827 (x is
 		 * any digit).<br/>
@@ -382,5 +382,5 @@ public class UinValidatorImpl implements UinValidator<String> {
 	private boolean restrictedAdminFilter(String id) {
 		return restrictedAdminDigits.parallelStream().anyMatch(id::contains);
 	}
-	
+
 }
